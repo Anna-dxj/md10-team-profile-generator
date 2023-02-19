@@ -1,4 +1,4 @@
-const Employee = requie('../lib/employee')
+const Employee = require('../lib/employee')
 
 describe('Employee', () => {
     describe ('Initiate', () => {

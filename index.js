@@ -1,9 +1,9 @@
 const fs = require('fs'); 
 const inquirer = require('inquirer');
 //add manager, engineer, intern modules
-const manager = require('./lib/manager');
-const engineer = require('./lib/engineer');
-const intern = require('./lib/intern');
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
 //add template.js
 
 function initialPrompt () {
@@ -38,6 +38,7 @@ function initialPrompt () {
             addIntern()
         } else {
             console.log('All members have been added!');
+            completeHtml();
         }
     })
 }
@@ -73,6 +74,7 @@ function addEngineer(){
             addIntern()
         } else {
             console.log('All members have been added')
+            completeHtml();
         }
     })
 }
@@ -107,16 +109,27 @@ function addIntern(){
             addIntern()
         } else {
             console.log('---\nAll members have been added!---\n')
+            completeHtml();
         }
     })
 }
+function startHtml(){
+    const initialHtml = `
+    `
+}
 function addHtml(position){
     if (position === 'manager'){
-        
+        let managerCardTxt = `
+        `
     } else if (position ===  'engineer'){
-
+        let engineerCardTxt = ``
     } else if (position === 'intern'){
+        let internCardTxt = ``
 
     }
+}
+function completeHtml(){
+    const endHtml = `
+    `
 }
 initialPrompt()
