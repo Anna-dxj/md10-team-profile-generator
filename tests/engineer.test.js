@@ -1,4 +1,4 @@
-const Engineer = requie('../lib/engineer')
+const Engineer = require('../lib/engineer')
 
 describe('Engineer', () => {
     describe ('Initiate', () => {
@@ -23,7 +23,7 @@ describe('Engineer', () => {
         });
         it (`Should set engineer GitHub`, () => {
             const github = 'github'
-            const obj = new Manager('name', 1234, 'email@email.com', github)
+            const obj = new Engineer('name', 1234, 'email@email.com', github)
             expect(obj.github).toEqual(github)
         })
     });
@@ -58,7 +58,7 @@ describe('Engineer', () => {
     describe(`getGithub`, () => {
         it (`Should return engineer GitHub`, () => {
             const github = 'github'
-            const obj = new Manager('name', 1234, 'email@email.com', github)
+            const obj = new Engineer('name', 1234, 'email@email.com', github)
             expect(obj.github).toEqual(github)
         })
     })

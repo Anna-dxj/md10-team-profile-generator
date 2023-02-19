@@ -1,4 +1,4 @@
-const manager = requie('../lib/manager')
+const Manager = require('../lib/manager')
 
 describe('manager', () => {
     describe ('Initiate', () => {

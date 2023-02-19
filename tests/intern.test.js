@@ -1,4 +1,4 @@
-const intern = requie('../lib/intern')
+const Intern = require('../lib/intern')
 
 describe('Intern', () => {
     describe ('Initiate', () => {
@@ -23,7 +23,7 @@ describe('Intern', () => {
         });
         it (`Should set intern's school`, () => {
             const school = 'school'
-            const obj = new Manager('name', 1234, 'email@email.com', school)
+            const obj = new Intern('name', 1234, 'email@email.com', school)
             expect(obj.school).toEqual(school)
         })
     });
@@ -38,7 +38,7 @@ describe('Intern', () => {
         it (`Should return intern id`, () => {
             const id = 1234 
             const obj = new Intern('name', id)
-            expect(obj.getName()).toEqual(id)
+            expect(obj.getId()).toEqual(id)
         });
     });
     describe (`getEmail`, () => {
@@ -51,14 +51,14 @@ describe('Intern', () => {
     describe (`getRole`, () => {
         it (`Should return intern`, () => {
             const role = 'Intern'
-            const obj = new Engineer('name', 1234, 'email@email.com')
+            const obj = new Intern ('name', 1234, 'email@email.com')
             expect(obj.getRole()).toEqual(role)
         });
     });
     describe(`getSchool`, () => {
         it (`Should return intern's school name`, () => {
             const school = 'school'
-            const obj = new Manager('name', 1234, 'email@email.com', school)
+            const obj = new Intern('name', 1234, 'email@email.com', school)
             expect(obj.school).toEqual(school)
         })
     })
