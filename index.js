@@ -1,10 +1,11 @@
 const fs = require('fs'); 
 const inquirer = require('inquirer');
-//add manager, engineer, intern modules
+
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
-//add template.js
+
+const template = require('./src/template');
 
 function initialPrompt () {
     const managerQuestions = [
@@ -28,17 +29,23 @@ function initialPrompt () {
     inquirer.prompt(managerQuestions).then((response) => {
         const {managerName, managerId, managerEmail, office, menu} = response
         const manager = new Manager (managerName, managerId, managerEmail, office)
-        addHtml(manager)
+        fs.writeFile('./dist/output.html', template.starterHtml(), (error) => {
+            if (error) {console.error(error)}
+        })
+        fs.appendFile('./dist/output.html', template.cardHtml(manager), (error) => {
+            if (error) {console.error(error)}
+        })
         
         if (menu === 'add engineer'){
-            console.log(`---\nInformation for intern:\n---`);
-            addEngineer();
+            console.log(`---\nInformation for engineer:\n---`);
+            addEngineer()
         } else if (menu === 'add intern'){
             console.log(`---\nInformation for intern:\n---`)
             addIntern()
         } else {
-            console.log('All members have been added!');
-            completeHtml();
+            fs.appendFile('./dist/output.html', template.endHtml(), (error) => {
+                if (error) {console.error(error)}
+            })
         }
     })
 }
@@ -65,7 +72,9 @@ function addEngineer(){
     inquirer.prompt(engineerQuestions).then((response) => {
         const {engineerName, engineerId, engineerEmail, github, menu} = response
         let engineer = new Engineer(engineerName, engineerId, engineerEmail, github)
-        addHtml(engineer);
+        fs.appendFile('./dist/output.html', template.cardHtml(engineer), (error) => {
+            if (error) {console.error(error)}
+        })
         if (menu === 'add engineer'){
             console.log(`---\nInformation for engineer:\n---`)
             addEngineer()
@@ -73,8 +82,9 @@ function addEngineer(){
             console.log(`---\nInformation for intern:\n---`)
             addIntern()
         } else {
-            console.log('All members have been added')
-            completeHtml();
+            fs.appendFile('./dist/output.html', template.endHtml(), (error) => {
+                if (error) {console.error(error)}
+            })
         }
     })
 }
@@ -100,7 +110,9 @@ function addIntern(){
     inquirer.prompt(internQuestions).then((response) => {
         const {internName, internId, internEmail, school, menu} = response
         let intern = new Intern (internName, internId, internEmail, school)
-        addHtml(intern)
+        fs.appendFile('./dist/output.html', template.cardHtml(intern), (error) => {
+            if (error) {console.error(error)}
+        })
         if (menu === 'add engineer'){
             console.log(`---\nInformation for engineer:\n---`)
             addEngineer()
@@ -108,28 +120,10 @@ function addIntern(){
             console.log(`---\nInformation for intern:\n---`)
             addIntern()
         } else {
-            console.log('---\nAll members have been added!---\n')
-            completeHtml();
+            fs.appendFile('./dist/output.html', template.endHtml(), (error) => {
+                if (error) {console.error(error)}
+            })
         }
     })
-}
-function startHtml(){
-    const initialHtml = `
-    `
-}
-function addHtml(position){
-    if (position === 'manager'){
-        let managerCardTxt = `
-        `
-    } else if (position ===  'engineer'){
-        let engineerCardTxt = ``
-    } else if (position === 'intern'){
-        let internCardTxt = ``
-
-    }
-}
-function completeHtml(){
-    const endHtml = `
-    `
 }
 initialPrompt()
