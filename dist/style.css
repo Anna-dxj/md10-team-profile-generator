@@ -1,0 +1,11 @@
+:root{
+    --teal: #48BCD1;
+    --blue: #C0DCEC;
+}
+.custom-nav {
+    background-color: var(--teal);
+    color: white;
+}
+.custom-card-head {
+    background-color: var(--blue);
+}
