@@ -28,7 +28,7 @@ function initialPrompt () {
     ]
     inquirer.prompt(managerQuestions).then((response) => {
         const {managerName, managerId, managerEmail, office, menu} = response
-        const manager = new Manager (managerName, managerId, managerEmail, office)
+        const manager = new Manager (managerName.trim(), managerId.trim(), managerEmail.trim(), office.trim())
         fs.writeFile('./dist/output.html', template.starterHtml(), (error) => {
             if (error) {console.error(error)}
         })
@@ -43,6 +43,7 @@ function initialPrompt () {
             console.log(`---\nInformation for intern:\n---`)
             addIntern()
         } else {
+            console.log('Team added!')
             fs.appendFile('./dist/output.html', template.endHtml(), (error) => {
                 if (error) {console.error(error)}
             })
@@ -71,7 +72,7 @@ function addEngineer(){
     ]
     inquirer.prompt(engineerQuestions).then((response) => {
         const {engineerName, engineerId, engineerEmail, github, menu} = response
-        let engineer = new Engineer(engineerName, engineerId, engineerEmail, github)
+        let engineer = new Engineer(engineerName.trim(), engineerId.trim(), engineerEmail.trim(), github.trim())
         fs.appendFile('./dist/output.html', template.cardHtml(engineer), (error) => {
             if (error) {console.error(error)}
         })
@@ -82,6 +83,7 @@ function addEngineer(){
             console.log(`---\nInformation for intern:\n---`)
             addIntern()
         } else {
+            console.log('Team added!')
             fs.appendFile('./dist/output.html', template.endHtml(), (error) => {
                 if (error) {console.error(error)}
             })
@@ -109,7 +111,7 @@ function addIntern(){
     ]
     inquirer.prompt(internQuestions).then((response) => {
         const {internName, internId, internEmail, school, menu} = response
-        let intern = new Intern (internName, internId, internEmail, school)
+        let intern = new Intern (internName.trim(), internId.trim(), internEmail.trim(), school.trim())
         fs.appendFile('./dist/output.html', template.cardHtml(intern), (error) => {
             if (error) {console.error(error)}
         })
@@ -120,6 +122,7 @@ function addIntern(){
             console.log(`---\nInformation for intern:\n---`)
             addIntern()
         } else {
+            console.log('Team added!')
             fs.appendFile('./dist/output.html', template.endHtml(), (error) => {
                 if (error) {console.error(error)}
             })
