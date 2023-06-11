@@ -3,6 +3,10 @@
   ## Description
   The Team Profile Generator is a command line-run application that allows a manager to generate a webpage to display their team's basic information (name, role, email, work ID, and role-related information). This webpage is dynamically generated through command-line prompts.  This application should allow managers to have quick access to the team's emails and role-related inforamtion (such as github profile). 
 
+  While running the Team Profile Generator in the terminal, it should look like the following screenshot: [!Screenshot of terminal](./screenshot/terminal.png)
+
+  After creating the desired team, the output HTML should look like the following: [!Screenshot of output](./screenshot/output.png)
+
   Through development of this application, I have gained more comfort with object-oriented programming, and writing and running unit tests. 
 
   ---
@@ -24,6 +28,8 @@
   To make full use of this application, the manager answer all questions prompted by the command line. 
 
   [This video](https://youtu.be/0TY_5bN7Oo8) is a complete walkthrough of how to use this application. 
+
+  Please note that that as it stands, upon adding all teammates with the Team Generator, the output HTML will not be automatically deployed; it is up to the user to deploy the HTML as a webpage if they wish to. 
 
   ## License
 
